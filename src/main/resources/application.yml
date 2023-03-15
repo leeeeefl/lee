@@ -1,9 +1,29 @@
+server:
+  port: 8081
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db1
     username: root
     password: 1234
+  application:
+    name: springcloud-customer
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30 #心跳间隔时间，默认为30s
+  client:
+    registry-fetch-interval-seconds: 30 #拉取注册信息间隔时间，默认30s
+    service-url:
+      defaultZone: http://localhost:8001/eureka #表示eureka服务注册中心的部署位置
+#    enabled: true
+
+# info配置
+info:
+  # 项目的名称
+  app.name: 客户服务
+  # 公司的名称
+  company.name: 自定义
 
 mybatis-plus:
   #注册sql映射文件(resources/mapper/*.xml) 从这屋扫描mapper.xml ，通过namespace与 mapper接口进行绑定
